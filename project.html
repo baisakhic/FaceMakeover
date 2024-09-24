@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  	
+<style>
+.dropdown:hover .dropdown-menu {
+    		display: block;
+		}	
+	.dropdown-menu{
+		position: relative;
+		top:30px;
+	}
+
+#top {	position: fixed;
+		left: 0;
+		right: 0;
+		height: 70%;
+		top: 0;
+	 }
+
+body{background: url('bin//bg.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+#bottom {position: fixed;
+	padding-top: 30px;
+    left: 220px;
+    right: 0;
+    height: 30%;
+    bottom: 0;
+	}
+
+#eye1 #imeye1 { width: 150px; height: 50px;
+    border: 0px;
+	z-index:222; 
+	position: relative;
+	left:755px;
+	top: -580px;
+}
+
+#lip1 #imlip1 { width: 60px; height: 30px;
+   	z-index:222; 
+	position: relative;
+	left: 800px;
+	top: -500px;
+}
+
+#nose1 #imnose1 { width: 30px; height: 60px;
+    z-index:222; 
+	position: relative;
+	left:810px;
+	top: -610px;
+}
+
+#hair1 #imhair1 { width: 330px; height: 420px;
+    z-index:222; 
+	position: relative;
+	left:660px;
+	top: -300px;
+}
+
+.box{
+  width: 250px;
+  height: 250px;
+  background: #eee;
+  border: 20px solid transparent;
+  -moz-border-image: -moz-linear-gradient(top, #c68e42 0%, #edd87d 100%);
+  -webkit-border-image: -webkit-linear-gradient(top, #c68e42 0%, #edd87d 100%);
+  border-image: linear-gradient(to bottom, #c68e42 0%, #edd87d 100%);
+  border-image-slice: 1;
+}
+
+.spanclass{position: relative; padding-right:60px; top:30px;
+			}
+
+.image{ width: 200px; height:75px;
+		 position: relative; left: 50px;
+		 -webkit-box-shadow: 0 10px 6px -6px #777;
+         -moz-box-shadow: 0 10px 6px -6px #777;
+         box-shadow: 0 10px 6px -6px #777;
+		
+		}
+
+.disp-right{ position:relative; left: 55px; top: -2px; }
+
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 60px;
+	background: url('bin//makeup.png');
+	border-width: 3px;
+	border-right-color: #111;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.c1 {width: 15%;}
+.c2 {width: 15%;}
+.c3 {width: 10%;}
+.c4 {width: 20%; height:60%; }
+
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev, type) {
+    ev.preventDefault();
+    var img_id = ev.dataTransfer.getData("text");
+    
+    console.log(img_id);
+    
+    if (img_id.indexOf(type) == -1) {
+        return;
+    }
+    
+    var dragged_img_element=document.getElementById(img_id);
+    var new_img=dragged_img_element.getAttribute("src");
+   
+    var target_img_element=document.getElementById(ev.target.id);
+    target_img_element.setAttribute("src",new_img);
+}
+
+var slideIndex = 1;
+var clas="";
+showDivs(slideIndex, clas);
+
+function plusDivs(n,clas) {
+  showDivs(slideIndex += n, clas);
+}
+
+function showDivs(n,clas) {
+  var i;
+  var x = document.getElementsByClassName(clas);
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+     x[slideIndex-1].style.display = "inline";  
+}
+
+
+</script>
+</head>
+<body >
+<div id="mySidenav" class="sidenav" >
+</div>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="font-weight: bold">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Save <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Load</a>
+				</li>
+				<li class="nav-item dropdown">
+            <div class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</div>
+				<div class="dropdown-menu" aria-labelledby="dropdown01">
+					<form method="POST" action="bin/cgi-bin/test.cgi" style="padding-left:20px; padding-right:20px">
+						<input id="name" type="text" name="name" placeholder="mydesign">
+						
+						<input id="eyes" type="text" name="eyes" value="0" ><!--style="display:none;">-->
+						
+						<input id="lips" type="text" name="lips" value="0" ><!--style="display:none;">-->
+						
+						<input id="nose" type="text" name="nose" value="0" ><!--style="display:none;">-->
+						
+						<input id="hair" type="text" name="hair" value="0" ><!--style="display:none;">-->
+						<br>
+						<input type="submit" value=" Test " >
+					</form>
+				</div>	
+			 </li>
+          
+			</ul>	
+		</div>
+    </nav>
+	
+<div>	
+<div id="left">	
+	 
+</div>
+<div id="right">
+	<div id="top">
+		<img src="bin//wordart.png" style="position:relative; top:40px; left:200px">
+		<img src='bin//face.jpg' class="box" style="position:relative; top:80px; left:220px; height: 415px; width:360px " >
+		<div id="hair1"  >
+			<img src="bin//white.png" ondrop="drop(event, 'hair')" ondragstart="drag(event)" ondragover="allowDrop(event)" id="imhair1" draggable="true" >
+		</div>
+		<div id="eye1"  >
+			<img src="bin//white.png" ondrop="drop(event, 'eye')" ondragstart="drag(event)" ondragover="allowDrop(event)" id="imeye1" draggable="true" >
+		</div>
+
+		<div id="lip1"  >
+			<img src="bin//white.png" ondrop="drop(event, 'lip')" ondragstart="drag(event)" ondragover="allowDrop(event)" id="imlip1" draggable="true" >
+		</div>
+
+		<div id="nose1"  >
+			<img src="bin//white.png" ondrop="drop(event, 'nose')" ondragstart="drag(event)" ondragover="allowDrop(event)" id="imnose1" draggable="true" >
+		</div>
+	</div>
+	
+	<div id="bottom" style="overflow: scroll; display:inline">
+		<br>
+		<span id="eye2" class="w3-content w3-display-container spanclass">
+			<img id="imeye2" class="image mySlides c1" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//eyes1.png" >
+			<img id="imeye3" class="image mySlides c1" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//eyes2.png" style="display: none">
+			<img id="imeye4" class="image mySlides c1" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//eyes3.png" style="display: none">
+			<img id="imeye5" class="image mySlides c1" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//eyes4.png" style="display: none">
+			<img id="imeye6" class="image mySlides c1" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//eyes5.png" style="display: none">
+			<img id="imeye7" class="image mySlides c1" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//eyes6.png" style="display: none">
+			<img id="imeye8" class="image mySlides c1" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//eyes7.png" style="display: none">
+			<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1, 'image mySlides c1')">&#10094;</button>
+			<button class="w3-button w3-black disp-right" style="display:inline"; onclick="plusDivs(1, 'image mySlides c1')">&#10095;</button>
+		</span>
+		
+		<span id="lip2"  class="w3-content w3-display-container spanclass"  >
+			<img id="imlip2" class="image mySlides c2" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//lips1.png" >
+			<img id="imlip3" class="image mySlides c2" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//lips2.png" style="display: none">
+			<img id="imlip4" class="image mySlides c2" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//lips3.png" style="display: none">
+			<img id="imlip5" class="image mySlides c2" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//lips4.png" style="display: none">
+			<img id="imlip6" class="image mySlides c2" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//lips5.png" style="display: none">
+			<img id="imlip7" class="image mySlides c2" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//lips6.png" style="display: none">
+			<img id="imlip8" class="image mySlides c2" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//lips7.png" style="display: none">
+			<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1, 'image mySlides c2')">&#10094;</button>
+			<button class="w3-button w3-black disp-right" style="display:inline" onclick="plusDivs(1, 'image mySlides c2')">&#10095;</button>
+		</span>
+
+		
+		<span id="nose2" class="w3-content w3-display-container spanclass" >
+			<img id="imnose2" class="image mySlides c3" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//nose1.png" >
+			<img id="imnose3" class="image mySlides c3" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//nose2.jpg" style="display: none">
+			<img id="imnose4" class="image mySlides c3" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//nose3.png" style="display: none">
+			<img id="imnose5" class="image mySlides c3" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//nose4.png" style="display: none">
+			<img id="imnose6" class="image mySlides c3" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//nose5.png" style="display: none">
+			<img id="imnose7" class="image mySlides c3" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//nose6.png" style="display: none">
+			<img id="imnose8" class="image mySlides c3" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//nose1.png" style="display: none">
+			<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1, 'image mySlides c3')">&#10094;</button>
+			<button class="w3-button w3-black disp-right" style="display:inline" onclick="plusDivs(1, 'image mySlides c3')">&#10095;</button>
+		</span>	
+
+		
+		<span id="hair2" class="w3-content w3-display-container spanclass" >
+			<img id="imhair2" class="image mySlides c4" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//hair1.png" >
+			<img id="imhair3" class="image mySlides c4" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//hair2.png" style="display: none">
+			<img id="imhair4" class="image mySlides c4" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//hair3.png" style="display: none">
+			<img id="imhair5" class="image mySlides c4" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//hair4.png" style="display: none">
+			<img id="imhair6" class="image mySlides c4" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//hair5.png" style="display: none">
+			<img id="imhair7" class="image mySlides c4" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//hair6.png" style="display: none">
+			<img id="imhair8" class="image mySlides c4" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" src="bin//hair7.png" style="display: none">
+			<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1, 'image mySlides c4')">&#10094;</button>
+			<button class="w3-button w3-black disp-right" style="display:inline" onclick="plusDivs(1, 'image mySlides c4')">&#10095;</button>
+		</span>
+		<span></span>
+	</div>
+</div>	
+</div>
+</body>
+</html>
+
